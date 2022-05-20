@@ -7,6 +7,8 @@
 
 # prep_telco(): function notes below
 
+# encode_telco(): function notes below
+
 #_____________________________________________________________________________
 
 # Required imports for these files:
@@ -62,7 +64,7 @@ def prep_titanic(df):
 def prep_telco(df):
     """
     Takes in Telco_Churn Dataframe.
-    Arguments: drops unnecessary columns, converts categorical data.    
+    Arguments: drops unnecessary columns   
     Returns cleaned data.
     """
     #drop unneeded columns
@@ -73,17 +75,28 @@ def prep_telco(df):
     df = df[df.total_charges != ""]
     #convert to correct data type:
     df['total_charges'] = df.total_charges.astype(float)
-    #Get dummies for non-binary categorical variables:
-    dummy_df = pd.get_dummies(df[[
-        'gender', 'senior_citizen', 'partner', 'dependents',
-        'phone_service', 'multiple_lines', 'online_security',
-       'online_backup', 'device_protection', 'tech_support', 'streaming_tv',
-       'streaming_movies', 'paperless_billing','churn', 'contract_type', 'payment_type',
-       'internet_service_type']],
-                                dummy_na = False, 
-                                drop_first=[True, True, True])
-    #concatenate the two dataframes
-    df = pd.concat([df, dummy_df], axis=1)
+
     return df
 
-    #['internet_service_type_id', 'payment_type_id', 'contract_type_id']
+
+
+
+def encode_telco(df):
+    """
+    Takes in Telco_Churn Dataframe.
+    Encodes categorical data.    
+    Returns encoded_df.
+    """
+    #Get dummies for non-binary categorical variables:
+    dummies_list = df.select_dtypes('object').columns
+    dummies_list = dummies_list.drop(['customer_id'])
+    dummy_df = pd.get_dummies(df[dummies_list], dummy_na = False, drop_first=True)
+    #concatenate the two dataframes
+    df = pd.concat([df, dummy_df], axis=1)
+    #rename the encoded df
+    encoded_df = df.drop(columns=dummies_list)
+    #return the encoded df
+    return encoded_df
+
+
+    #
