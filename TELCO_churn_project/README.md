@@ -75,20 +75,20 @@ Streaming TV,
 Streaming movies, 
 Churn status (bool)
 
-## Project Outline
-### 1. Acquire, prepare and clean TELCO data set.
+<h2> Project Outline </h2>
+<h3>1. Acquire, prepare and clean TELCO data set.</h3>
 <br>
 - Split into train, validate, test sets.
 - create an encoded data set for modeling, and retain an unencoded set for EDA. 
 <br>
-### 2. Perform Exploratory Data Analysis on the unencoded data set
+<h3>2. Perform Exploratory Data Analysis on the unencoded data set</h3>
 <br>
 - explore/demonstrate variable relationships graphically
 - set null and alternate hypotheses to reject/fail to reject
 - run statistical testing on related variables/variables of interest driving churn
 - document takeaways
 <br>   
-### 3. Do some Modeling:
+<h3>3. Do some Modeling:</h3>
 <br>
 - demonstrate 3 models
 - Pick highest performing models to run on validate set
@@ -96,7 +96,7 @@ Churn status (bool)
 - document takeaways and conclusion
 - produce a predictions CSV to predict customer churn
 <br>
-### 4. Deliver Recommendations:
+<h3>4. Deliver Recommendations:</h3>
 <br>
 
 <h2> Key Findings</h2>
@@ -118,3 +118,16 @@ Churn status (bool)
 <br>
 <b> 3. Automate bill pay to eliminate the pain of paying</b>
     10% reduction in monthly bill for 6 months for signing up with valid autopay method of payment
+<h2> Key Findings</h2>
+<br>
+<hr style="border-top: 5px groove limegreen; margin-top: 1px; margin-bottom: 1px">
+1. Payment Type (e-check), Contract Type (monthly), and Internet Service Type (Fiber) are the primary drivers of churn among departing customers.
+    <br>
+    <br>
+2. Model Accuracy: The Logistic Regression Model provided accuracy of <b>80.5%</b> on the out-of-sample (test) data. Given additional time for fine tuning, I would include additional c-values in the LR model to tweak overall accuracy, and run more Chi2 testing to guide some feature engineering.
+<h2> Reproduce this project </h2>
+<br>
+<hr style="border-top: 5px groove limegreen; margin-top: 1px; margin-bottom: 1px">
+
+ 1. Create a local copy of the acquire.py, prepare.py, and split.py files in this repo. Note: you will need to contact CodeUp database admin for access to the CodeUp for any non-public data. 
+ 2. Once the data import is complete, use the libraries noted in in the EDA and Modeling sections to run statistical tests and predictive modeling on the data.
