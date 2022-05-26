@@ -1,6 +1,8 @@
 
 # Functions in this SPLIT file:
 
+# train_validate_test_split(df, target, seed=123)
+
 # train_validate_test_split(df, target, seed): versatile splitting function that
 # returns a train( 56%), validate (24%) and test data (20%) set
 

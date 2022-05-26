@@ -46,6 +46,8 @@ def get_iris_db(use_cache=True):
 #__________________________________________________________________________________
 
 def get_telco_data(use_cache=True):
+    """retrieves TELCO data set either from a local CSV (if it exists),
+    or from a SQL query to the CodeUp DB"""
     filename = "telco.csv"
     if os.path.isfile(filename) and use_cache:
         return pd.read_csv(filename)
