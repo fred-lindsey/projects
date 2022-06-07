@@ -38,10 +38,9 @@ def get_connection(db, user=env.user, host=env.host, password=env.password):
 def get_zillow_data(use_cache=True):
     """Retrieves zillow data set either from a local CSV (if it exists),
         or from a SQL query to the CodeUp DB.
-        Parameters: SELECT parcelid, bedroomcnt, bathroomcnt, 
+        Parameters: SELECT bedroomcnt, bathroomcnt, 
 		calculatedfinishedsquarefeet AS sq_ft,
         lotsizesquarefeet AS lot_size,
-        garagecarcnt AS car_garage,
         roomcnt AS room_count,
         taxvaluedollarcnt AS tax_assessed_price, 
         yearbuilt, taxamount, fips AS county, pred_2017.logerror for all Single Family
@@ -51,13 +50,12 @@ def get_zillow_data(use_cache=True):
         return pd.read_csv(filename)
     else:
         df = pd.read_sql("""
-        SELECT parcelid, bedroomcnt, bathroomcnt, 
+        SELECT bedroomcnt, bathroomcnt, 
 		calculatedfinishedsquarefeet AS sq_ft,
         lotsizesquarefeet AS lot_size,
-        garagecarcnt AS car_garage,
         roomcnt AS room_count,
         taxvaluedollarcnt AS tax_assessed_price, 
-        yearbuilt, taxamount, fips AS county, pred_2017.logerror
+        yearbuilt, taxamount, fips AS county
         FROM properties_2017
         JOIN propertylandusetype USING (propertylandusetypeid)
         JOIN predictions_2017 AS pred_2017 USING (parcelid)
@@ -102,12 +100,12 @@ def prep_zillow(df):
     # drop any duplicate rows
     df = df.drop_duplicates(keep='first')
     # convert column types from float to int
-    df = df.astype({'county': object, 'parcelid': object})
+    df = df.astype({'county': object})
     # remove homes with 0 BR/BD or SQ FT from the final df
     df = df[(df.bedroomcnt != 0) & (df.bathroomcnt != 0) & 
     (df.sq_ft >= 69)]
     # remove all rows where any column has z score gtr than 3
-    non_quants = ['county', 'parcelid']
+    non_quants = ['county']
     quants = df.drop(columns=non_quants).columns
     # outlier handling
     # remove numeric values with > 3.5 std dev
@@ -140,3 +138,20 @@ def fit_and_scale(scaler, train, validate, test):
     scaled_validate = pd.DataFrame(data=scaler.transform(validate[floats]), columns=floats)
     scaled_test = pd.DataFrame(data=scaler.transform(test[floats]), columns=floats)
     return scaled_train, scaled_validate, scaled_test
+
+#__________________________________________________________________________________
+def encode_zillow(df):
+    """
+    Takes in Zillow Dataframe.
+    Encodes categorical data.    
+    Returns encoded_df.
+    """
+    #Get dummies for non-binary categorical variables:
+    dummies_list = df.select_dtypes('object').columns
+    dummy_df = pd.get_dummies(df[dummies_list], dummy_na = False, drop_first=True)
+    #concatenate the two dataframes
+    df = pd.concat([df, dummy_df], axis=1)
+    #rename the encoded df
+    encoded_df = df.drop(columns=dummies_list)
+    #return the encoded df
+    return encoded_df
