@@ -7,10 +7,16 @@
 # prep_zillow(df): removes nulls, drops duplicates, formats float to int,
 # removes 0 value columns for BD/BR/SQ FT
 
-# wrangle_zillow(): combination of the two above functions that produces a 
+# remove_outliers(df): removes outliers with a z_score > 3.5
+
+# map_counties(df): improves readability by mapping county name to FIPS
+
+# encode_zillow(df): encodes variables with d_type object
+
+# wrangle_zillow(): combination of multiple above functions that produces a 
 # complete, clean data set
 
-# fit_and_scale(scaler, train, validate, test): takes in 
+# fit_and_scale(scaler, train, validate, test): scaler function for X datasets
 
 #____________________________________________________________________________________
 
@@ -114,14 +120,6 @@ def prep_zillow(df):
 
     return df
 #__________________________________________________________________________________
-
-def wrangle_zillow():
-    df = get_zillow_data()
-    df = prep_zillow(df)
-    return df
-
-#__________________________________________________________________________________
-
 #scaler = sklearn.preprocessing.MinMaxScaler()
 #scaler = sklearn.preprocessing.StandardScaler()
 #scaler = sklearn.preprocessing.RobustScaler()
@@ -155,3 +153,14 @@ def encode_zillow(df):
     encoded_df = df.drop(columns=dummies_list)
     #return the encoded df
     return encoded_df
+#__________________________________________________________________________________
+
+def wrangle_zillow():
+    df = get_zillow_data()
+    df = prep_zillow(df)
+    df = encode_zillow(df)
+    return df
+
+#__________________________________________________________________________________
+
+
