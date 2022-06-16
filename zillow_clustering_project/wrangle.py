@@ -86,9 +86,7 @@ def handle_missing_values(df, prop_required_column = .7, prop_required_row=.75):
 # handles missing values, drops columns that are 30% empty, drops rows that are 25% empty
 # drops duplicate columns as well
 def handle_remaining_nulls(df):
-    null_columns = ['calculatedbathnbr','fullbathcnt', 'lotsizesquarefeet', 'yearbuilt', 
-    'structuretaxvaluedollarcnt', 'calculatedfinishedsquarefeet','taxvaluedollarcnt', 'landtaxvaluedollarcnt',
-    'taxamount']
+    null_columns = ['lotsizesquarefeet', 'yearbuilt', 'calculatedfinishedsquarefeet','taxvaluedollarcnt']
     for col in null_columns:
         df[col] = df[col].fillna(df[col].mean())
     return df
@@ -100,7 +98,9 @@ def handle_remaining_nulls(df):
 def remove_columns(df):
     cols_to_remove = ['propertylandusetypeid', 'id', 'id.1', 'finishedsquarefeet12', 
     'regionidzip', 'rawcensustractandblock', 'assessmentyear', 'censustractandblock',
-    'regionidcity']
+    'regionidcity', 'taxamount', 'landtaxvaluedollarcnt', 'structuretaxvaluedollarcnt',
+    'fullbathcnt', 'calculatedbathnbr', 'parcelid', 'regionidcounty', 'parcelid', 
+    'propertycountylandusecode', 'propertylandusedesc']
     df = df.drop(columns=cols_to_remove)
     return df
 #__________________________________________________________________________________
@@ -115,7 +115,7 @@ def map_counties(df):
 #__________________________________________________________________________________
 def convert_data_types(df):
     # identified columns to change to object types, for later encoding
-    non_quant_cols = ['parcelid', 'regionidcounty', 'fips', 'latitude', 'longitude']
+    non_quant_cols = ['fips', 'latitude', 'longitude']
     for col in non_quant_cols:
         df[col] = df[col].astype('object')
     return df
