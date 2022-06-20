@@ -207,7 +207,7 @@ def encode_zillow(df):
     """
     #Get dummies for non-binary categorical variables:
     dummies_list = df.select_dtypes('object').columns
-    dummy_df = pd.get_dummies(df[dummies_list], dummy_na = False, drop_first=True)
+    dummy_df = pd.get_dummies(df[dummies_list], dummy_na = False, drop_first=False)
     #concatenate the two dataframes
     df = pd.concat([df, dummy_df], axis=1)
     #rename the encoded df
@@ -215,7 +215,7 @@ def encode_zillow(df):
     #return the encoded df
     return encoded_df
 #________________________________________________________
-#scaler = sklearn.preprocessing.MinMaxScaler()
+scaler = sklearn.preprocessing.MinMaxScaler()
 #scaler = sklearn.preprocessing.StandardScaler()
 #scaler = sklearn.preprocessing.RobustScaler()
 #pick the scaler and specify in the parameters
