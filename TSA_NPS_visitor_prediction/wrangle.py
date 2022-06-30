@@ -275,14 +275,19 @@ def get_combined_park_visitors(use_cache=True):
         combined_park_visitors.to_csv(filename, index=False)
         return combined_park_visitors
 
-
-
-        # combined_park_visitors = combined_park_visitors.apply(lambda x: x.str.replace(',', ''))
-        # combined_park_visitors.date = pd.to_datetime(combined_park_visitors.date)
-        # combined_park_visitors.set_index(combined_park_visitors.date).sort_index()
-        # combined_park_visitors = combined_park_visitors.drop(columns='date')
-        # combined_park_visitors.yellowstone = combined_park_visitors.yellowstone.astype('int64')
-        # combined_park_visitors.grand_canyon = combined_park_visitors.grand_canyon.astype('int64')
-        # combined_park_visitors.rocky_mtn = combined_park_visitors.rocky_mtn.astype('int64')
-        # combined_park_visitors.zion = combined_park_visitors.zion.astype('int64')
-        # combined_park_visitors.great_smoky_mtns = combined_park_visitors.great_smoky_mtns.astype('int64')
+# 12. Get final prepped and cleaned DataFrame
+def cleaned_and_prepped_NPS_visitors():
+    df = get_combined_park_visitors()
+    df = df.drop(columns=['date_x', 'date_y', 'date_x.1', 'date_y.1'])
+    df.date = pd.to_datetime(df.date)
+    df = df.set_index(df.date).sort_index()
+    df = df.drop(columns='date')
+    # cleans the commas out of the numerical columns while they are strings. This only works if all the columns are string objects.
+    df = df.apply(lambda x: x.str.replace(',', ''))
+    #change columns from strings to int64
+    df.yellowstone = df.yellowstone.astype('int64')
+    df.grand_canyon = df.grand_canyon.astype('int64')
+    df.rocky_mtn = df.rocky_mtn.astype('int64')
+    df.zion = df.zion.astype('int64')
+    df.great_smoky_mtns = df.great_smoky_mtns.astype('int64')
+    return df
