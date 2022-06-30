@@ -5,7 +5,7 @@ import requests
 import os
 
 #___________________________________________________________________________________________________________________
-def get_sales_df(use_cache=True):
+def get_gsm_df(use_cache=True):
     #use local cache from CSV if available
     filename = "sales_df.csv"
     if os.path.isfile(filename) and use_cache:
@@ -61,7 +61,7 @@ def get_items_df(use_cache=True):
         items = []
 
         #set the domain an endpoint
-        domain = 'https://python.zgulde.net'
+        domain = 'https://pyt'
         endpoint = '/api/v1/items'
 
         # the url is the combination of domain and endpoint

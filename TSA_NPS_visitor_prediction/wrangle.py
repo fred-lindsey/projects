@@ -272,7 +272,7 @@ def get_combined_park_visitors(use_cache=True):
         combined_park_visitors = combined_park_visitors.merge(rocky_mtn,left_index=True, right_index=True, copy=True)
         combined_park_visitors = combined_park_visitors.merge(zion,left_index=True, right_index=True, copy=True)
         combined_park_visitors = combined_park_visitors.merge(great_smoky_mtns,left_index=True, right_index=True, copy=True)
-        combined_park_visitors.to_csv(filename, index=True)
+        combined_park_visitors.to_csv(filename, index=False)
         return combined_park_visitors
 
 
