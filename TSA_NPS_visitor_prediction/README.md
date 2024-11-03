@@ -20,11 +20,9 @@
 
 ## 1. Acquire/Prepare: Source the data from NPS.GOV and produced a composite dataframe for 5 parks and a total visits column for Exploration and Modeling.
 
-## 2. Data Exploration: explored the distribution and seasonality of visits to determine peak periodds of visitation, as well as individual park trends if they exist. Also use seasonal decompostion to identify underlying trends.
+## 2. Data Exploration: explored the distribution and seasonality of visits to determine peak periods of visitation, as well as individual park trends if they exist. Also use seasonal decompostion to identify underlying trends.
 
 ## 3. Modeling: Create models that will forecast visitorship, using Time Series methods including last observed value, simple moving average, rolling average, Holts-Winter linear method, and Seasonal Trend.
-
-## 4. Conclusion and Next Steps: measure the results of the best predictive model and suggest next steps.
 
 <hr style="border-top: 10px groove blue; margin-top: 1px; margin-bottom: 1px">
     
@@ -48,9 +46,9 @@
 
 ## 4. Conclusion/Takeways:
 
-### A. The best predictive model is a seasonal analysis model, using trend data and historical patterns to predict future park visits. The error rate (RMSE) produced in the final forecast is 1.8 mn visits, or roughly 25% of total estimated visits. The period for estimated visits notably included an anomaly event, the 2020 pandemic, that may have afffected the final error rate.
+### A. The best predictive model is a seasonal ESM model, using trend data and historical patterns to predict future park visits. The error rate (RMSE) produced in the final forecast is 1.8 mn visits, or roughly 25% of total estimated visits. The period for estimated visits notably included an anomaly event, the 2020 pandemic, that may have afffected the final error rate.
 
-### B. Next steps: Use the Facebook Prophet TimeSeries model to see if that can beat my established baseline. Addtionally, incorporating weather and light data in the future.
+### B. Next steps: Use the Facebook Prophet TimeSeries model to see if that can beat my established baseline. 
 
 <hr style="border-top: 10px groove blue; margin-top: 1px; margin-bottom: 1px">
 
