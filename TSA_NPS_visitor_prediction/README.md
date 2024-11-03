@@ -5,8 +5,8 @@
 # import image module
 from IPython.display import Image
 
-# get the image
-Image(url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Logo_of_the_United_States_National_Park_Service.svg/1920px-Logo_of_the_United_States_National_Park_Service.svg.png", width=300, height=300)
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Logo_of_the_United_States_National_Park_Service.svg/1920px-Logo_of_the_United_States_National_Park_Service.svg.png" width="300" height="300">
+
 
 <hr style="border-top: 10px groove blue; margin-top: 1px; margin-bottom: 1px">
 ## Executive Summary:
