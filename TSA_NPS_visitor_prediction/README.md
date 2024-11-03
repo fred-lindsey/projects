@@ -6,23 +6,26 @@
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Logo_of_the_United_States_National_Park_Service.svg/1920px-Logo_of_the_United_States_National_Park_Service.svg.png" width="300" height="300">
 <hr style="border-top: 10px groove blue; margin-top: 1px; margin-bottom: 1px">
+
 ## Executive Summary:
 
-### 1. This project analyzed data from NPS records going back to 1979 at the nation's top 5 most visited national parks to predict visitors for the final 6 years on record, 2016-2021.
+### A. This project analyzed data from NPS records going back to 1979 at the nation's top 5 most visited national parks to predict visitors for the final 6 years on record, 2016-2021.
 
-### 2. The best predictive model is a seasonal analysis mdoel, using trend data and historical patterns to predict future park visits. The error rate (RMSE) produced in the final forecast is 1.8 mn visits, or roughly 25% of total estimated visits. The period for estimated visits notably included an anomaly event, the 2020 pandemic, that may have afffected the final error rate
+### B. The best predictive model is a seasonal analysis mdoel, using trend data and historical patterns to predict future park visits. The error rate (RMSE) produced in the final forecast is 1.8 mn visits, or roughly 25% of total estimated visits. The period for estimated visits notably included an anomaly event, the 2020 pandemic, that may have afffected the final error rate
 
 
 <hr style="border-top: 10px groove blue; margin-top: 1px; margin-bottom: 1px">
+
 ## Project Outline:
 
-### 1. Acquire/Prepare: Source the data from NPS.GOV and produced a composite dataframe for 5 parks and a total visits column for Exploration and Modeling.
+## 1. Acquire/Prepare: Source the data from NPS.GOV and produced a composite dataframe for 5 parks and a total visits column for Exploration and Modeling.
 
-### 2. Data Exploration: explored the distribution and seasonality of visits to determine peak periodds of visitation, as well as individual park trends if they exist. Also use seasonal decompostion to identify underlying trends.
+## 2. Data Exploration: explored the distribution and seasonality of visits to determine peak periodds of visitation, as well as individual park trends if they exist. Also use seasonal decompostion to identify underlying trends.
 
-### 3. Modeling: Create models that will forecast visitorship, using Time Series methods including last observed value, simple moving average, rolling average, Holts-Winter linear method, and Seasonal Trend.
+## 3. Modeling: Create models that will forecast visitorship, using Time Series methods including last observed value, simple moving average, rolling average, Holts-Winter linear method, and Seasonal Trend.
 
-### 4. Conclusion and Next Steps: measure the results of the best predictive model and suggest next steps.
+## 4. Conclusion and Next Steps: measure the results of the best predictive model and suggest next steps.
+
 <hr style="border-top: 10px groove blue; margin-top: 1px; margin-bottom: 1px">
     
 
@@ -42,13 +45,15 @@
 <b>Total_Visitors: Aggregate NTL park visitors, monthly</b>
 
 <hr style="border-top: 10px groove blue; margin-top: 1px; margin-bottom: 1px">
+
 ## 4. Conclusion/Takeways:
 
-### 1. The best predictive model is a seasonal analysis model, using trend data and historical patterns to predict future park visits. The error rate (RMSE) produced in the final forecast is 1.8 mn visits, or roughly 25% of total estimated visits. The period for estimated visits notably included an anomaly event, the 2020 pandemic, that may have afffected the final error rate.
+### A. The best predictive model is a seasonal analysis model, using trend data and historical patterns to predict future park visits. The error rate (RMSE) produced in the final forecast is 1.8 mn visits, or roughly 25% of total estimated visits. The period for estimated visits notably included an anomaly event, the 2020 pandemic, that may have afffected the final error rate.
 
-### 2. Next steps: Use the Facebook Prophet TimeSeries model to see if that can beat my established baseline. Addtionally, incorporating weather and light data in the future.
+### B. Next steps: Use the Facebook Prophet TimeSeries model to see if that can beat my established baseline. Addtionally, incorporating weather and light data in the future.
 
 <hr style="border-top: 10px groove blue; margin-top: 1px; margin-bottom: 1px">
+
 ## 5. Reproduce this project:
 - download the CSV files from the NPS at the links included in the final project notebook
 - utilize the wrangle fucntion for data prepartaion and cleaning, to generate the final Dataframe used in this project.
