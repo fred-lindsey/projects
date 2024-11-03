@@ -2,12 +2,9 @@
 <hr>
 <h2>Predicting Annual Visits to the Nation's 5 most-visited national Parks<h2/>
 <hr style="border-top: 10px groove blue; margin-top: 1px; margin-bottom: 1px">
-# import image module
-from IPython.display import Image
+
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Logo_of_the_United_States_National_Park_Service.svg/1920px-Logo_of_the_United_States_National_Park_Service.svg.png" width="300" height="300">
-
-
 <hr style="border-top: 10px groove blue; margin-top: 1px; margin-bottom: 1px">
 ## Executive Summary:
 
